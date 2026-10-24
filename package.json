@@ -1,0 +1,20 @@
+{
+  "name": "whosthebest",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c cyan,magenta \"npm run dev --workspace=@whosthebest/api\" \"npm run dev --workspace=@whosthebest/web\"",
+    "build": "npm run build --workspace=@whosthebest/api && npm run build --workspace=@whosthebest/web",
+    "typecheck": "npm run typecheck --workspace=@whosthebest/api && npm run typecheck --workspace=@whosthebest/web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  }
+}
